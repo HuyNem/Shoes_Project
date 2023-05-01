@@ -11,7 +11,7 @@ if ($result->num_rows>0){
     $_SESSION["Brand_add_error"]="ten thuong hieu ".$tenthuonghieu." exist!";
     header("Location: Brand_view.php");
 } else {
-    $target_file="./image/".$anhthuonghieu;
+    $target_file="./image/brand".$anhthuonghieu;
     if (move_uploaded_file($_FILES["anhthuonghieu"]["tmp_name"],$target_file)){
         $sql = "insert into thuonghieu(TenThuongHieu,Anh,Status) values ('".$tenthuonghieu."','".$anhthuonghieu."',".$cstatus.")";
         if ($conn->query($sql)==TRUE){

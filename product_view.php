@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/style_header.css">
-    <title>Sản phẩm</title>
-</head>
-
-<body>
     <?php include './views/header_admin.php'; ?>
     <div class="container">
-        <h3>Danh sách sản phẩm</h3>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Thêm
-        </button>
+        <h3 style="text-align: center; margin-top: 10px;">Danh sách sản phẩm</h3>
+        <a href="product_addedit.php" class="btn btn-success float-end" style="margin-bottom: 10px;">Thêm mới</a>
         <br>
-        
+
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -30,15 +15,17 @@
                     <th>Ảnh</th>
                     <th>Màu</th>
                     <th>Kích thước</th>
+                    <th>Mã thương hiệu</th>
+                    <th>Chức năng</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 //kết nối csdl
-                require_once('ketnoi.php');
+                require_once('./controllers/connect.php');
 
                 //câu lệnh liệt kê
-                $lietke_sql = "SELECT * FROM sinhvien ORDER BY masv, hoten";
+                $lietke_sql = "SELECT * FROM sanpham ORDER BY PID, TenSP";
 
                 //thực thi câu lệnh
                 $result = mysqli_query($conn, $lietke_sql);
@@ -47,12 +34,17 @@
                 while ($r = mysqli_fetch_assoc($result)) { //đưa từng hàng vào trong $r
                 ?>
                     <tr>
-                        <td><?php echo $r['masv']; ?></td>
-                        <td><?php echo $r['hoten']; ?></td>
-                        <td><?php echo $r['lop']; ?></td>
+                        <td><?php echo $r['PID']; ?></td>
+                        <td><?php echo $r['TenSP']; ?></td>
+                        <td><?php echo $r['SoLuong']; ?></td>
+                        <td><?php echo $r['Gia']; ?></td>
+                        <td><?php echo $r['AnhSP']; ?></td>
+                        <td><?php echo $r['MauSP']; ?></td>
+                        <td><?php echo $r['KichThuocSP']; ?></td>
+                        <td><?php echo $r['MaThuongHieu']; ?></td>
                         <td>
-                            <a href="sua.php?sid=<?php echo $r['id']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
-                            <a onclick="return confirm('Bạn có muốn xóa không?');" href="xoa.php?sid=<?php echo $r['id']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
+                            <a href="product_addedit.php?PID=<?php echo $r['PID']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
+                            <a onclick="return confirm('Bạn có muốn xóa không?');" href="xoa.php?PID=<?php echo $r['PID']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
                         </td>
                     </tr>
                 <?php
@@ -61,6 +53,3 @@
             </tbody>
         </table>
     </div>
-</body>
-
-</html>
