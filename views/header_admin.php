@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,27 +28,13 @@
               <li><a class="dropdown-item" href="Brand_view.php">Danh sách thương hiệu</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Quản lý thành viên</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Quản lý sản phẩm</a></li>
-              <li><a class="dropdown-item" href="#">Quản lý thành viên</a></li>
-              <li><a class="dropdown-item" href="#">A third link</a></li>
-            </ul>
-          </li>
-
-          <div class="d-flex ms-auto">
-            <span class="navbar-text ms-auto">Welcome !</span>
-            <a href="/logout.asp" class="btn btn-outline-warning ms-3">Logout</a>
-          </div>
         </ul>
+
       </div>
+      <form class="d-flex">
+        <span class="navbar-text ms-auto">Chào mừng <?php echo $_SESSION["taikhoan"]; ?></span>
+        <a href="logout_admin.php" class="btn btn-outline-warning ms-3">Đăng xuất</a>
+      </form>
     </div>
   </nav>
 

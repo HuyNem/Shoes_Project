@@ -1,11 +1,11 @@
-<body>
+<body style="background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);height: 1000px;">
     <?php include './views/header_admin.php'; ?>
     <div class="container" style="margin-top: 20px;">
         <h3 align="center">Danh sách thương hiệu</h3>
         <a href="Brand_add.php" class="btn btn-success float-end">Thêm mới</a>
         <br>
 
-        <table class="table" style="margin-top: 20px;">
+        <table class="table" style="margin-top: 20px; background-color: #fff;">
             <thead class="table-dark">
                 <tr>
                     <th>Mã thương hiệu</th>
@@ -35,8 +35,8 @@
                         <td><img src='./image/brand/<?php echo $r["Anh"]; ?>' width=100></td>
                         <td><?php echo $r['Status']; ?></td>
                         <td>
-                            <a href="sua.php?sid=<?php echo $r['MaThuongHieu']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
-                            <a onclick="return confirm('Bạn có muốn xóa không?');" href="xoa.php?sid=<?php echo $r['MaThuongHieu']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
+                            <a href="brand_edit.php?mathuonghieu=<?php echo $r['MaThuongHieu']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
+                            <a onclick="return confirm('Bạn có muốn xóa không?');" href="brand_delete_action.php?mathuonghieu=<?php echo $r['MaThuongHieu']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
                         </td>
                     </tr>
                 <?php

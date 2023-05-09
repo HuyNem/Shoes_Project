@@ -53,8 +53,9 @@
                         while ($r = mysqli_fetch_assoc($result)) {
                         ?>
 
-                            <option><?php echo $r['MaThuongHieu'];echo " ";
-                                          echo $r['TenThuongHieu']; ?></option>
+                            <option><?php echo $r['MaThuongHieu'];
+                                    echo " ";
+                                    echo $r['TenThuongHieu']; ?></option>
 
                         <?php
                         }
@@ -73,3 +74,4 @@
         </form>
     </div>
 </div>
+

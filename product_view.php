@@ -1,11 +1,14 @@
+<?php include './views/header_admin.php'; ?>
 
-    <?php include './views/header_admin.php'; ?>
+
+
+<body style="background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);height: 1000px;">
     <div class="container">
         <h3 style="text-align: center; margin-top: 10px;">Danh sách sản phẩm</h3>
-        <a href="product_addedit.php" class="btn btn-success float-end" style="margin-bottom: 10px;">Thêm mới</a>
+        <a href="product_add.php" class="btn btn-success float-end" style="margin-bottom: 10px;">Thêm mới</a>
         <br>
 
-        <table class="table">
+        <table class="table" style="background-color: #fff;">
             <thead class="table-dark">
                 <tr>
                     <th>Mã sản phẩm</th>
@@ -38,13 +41,13 @@
                         <td><?php echo $r['TenSP']; ?></td>
                         <td><?php echo $r['SoLuong']; ?></td>
                         <td><?php echo $r['Gia']; ?></td>
-                        <td><?php echo $r['AnhSP']; ?></td>
+                        <td><img src='./image/product/<?php echo $r["AnhSP"]; ?>' alt="" width=100px></td>
                         <td><?php echo $r['MauSP']; ?></td>
                         <td><?php echo $r['KichThuocSP']; ?></td>
                         <td><?php echo $r['MaThuongHieu']; ?></td>
                         <td>
-                            <a href="product_addedit.php?PID=<?php echo $r['PID']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
-                            <a onclick="return confirm('Bạn có muốn xóa không?');" href="xoa.php?PID=<?php echo $r['PID']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
+                            <a href="product_edit.php?pid=<?php echo $r['PID']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
+                            <a onclick="return confirm('Bạn có muốn xóa không?');" href="product_delete_action.php?pid=<?php echo $r['PID']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
                         </td>
                     </tr>
                 <?php
@@ -53,3 +56,4 @@
             </tbody>
         </table>
     </div>
+</body>
