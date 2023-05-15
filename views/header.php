@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,8 +40,20 @@
           </li>
         </ul>
       </div>
+      <form class="d-flex">
+        <?php
+           if (!is_null($_SESSION["HoTen"]) && trim($_SESSION["HoTen"]) != "") {
+        ?>
+        <span class="navbar-text ms-auto">Chào mừng <?php echo $_SESSION["HoTen"]; ?>!</span>
+          <a href="logout_cus.php" class="btn btn-outline-warning ms-3">Đăng xuất</a>
+        <?php } else {?>
+          <a href="login_customer.php" class="btn btn-outline-warning ms-3">Đăng nhập</a>
+
+          <?php } ?>
+      </form>
     </div>
   </nav>
+
 </body>
 
 </html>

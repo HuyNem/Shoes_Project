@@ -1,15 +1,20 @@
 <?php
-//lấy pid sửa
-$mathuonghieu = $_GET['mathuonghieu'];
-
-//kết nối csdl
-require_once './controllers/connect.php';
-
-//câu lệnh lấy thông tin sản phẩm có PID = $pid
-$edit_sql = "SELECT * FROM thuonghieu WHERE mathuonghieu = $mathuonghieu";
-
-$result = mysqli_query($conn, $edit_sql);
-$r   = mysqli_fetch_assoc($result);
+	session_start();
+	if ($_SESSION["login"] == FALSE){
+		//phải đăng nhập thì mới cho vào
+		$_SESSION["login_error"] = "Please login!";
+		header("Location: login_customer.php");
+	}
+	if (!isset($_SESSION["brand_edit_error"]))
+			$_SESSION["brand_edit_error"]="";
+			
+	$mathuonghieu = $_REQUEST["mathuonghieu"];
+	require("./controllers/connect.php");
+	$sql = "select * from thuonghieu where MaThuongHieu=".$mathuonghieu;
+	$result = $conn->query($sql) or die($conn->error);
+	if ($result->num_rows>0){
+		$r = $result->fetch_assoc();
+	}
 
 ?>
 

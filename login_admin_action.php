@@ -13,9 +13,9 @@ if ($result->num_rows > 0) {
     $_SESSION["login"] = TRUE;
     header("Location: homepage_admin.php");
 } else {
-    $_SESSION["login_error"] = "Username or Password incorrect! Please try again!";
+    $_SESSION["login_error"] = "Tài khoản hoặc mật khẩu không chính xác!";
     $_SESSION["login"] = FALSE;
-    header("Location: login.php");
+    header("Location: login_admin.php");
 }
 $conn->close();
 
