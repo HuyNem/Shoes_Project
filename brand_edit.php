@@ -23,7 +23,7 @@
 		<div class="container w-50 mt-3 abc">
 
 			<h3 align=center>Sửa thương hiệu</h3>
-			<form method=POST enctype="multipart/form-data" action="brand_edit_action.php">
+			<form method="POST" enctype="multipart/form-data" action="brand_edit_action.php">
 				<div class="row">
 
 					<div class="mb-3 mt-3">
@@ -54,7 +54,7 @@
 					</div>
 
 				</div>
-
+				<input type="hidden" value="<?php echo $mathuonghieu; ?>" name="mathuonghieu">
 				<button type="submit" class="btn btn-primary" value="Save">Sửa</button>
 				<input type="Reset" class="btn btn-secondary" name="" id="">
 				<a href="brand_view.php" class="btn btn-danger">Hủy</a>

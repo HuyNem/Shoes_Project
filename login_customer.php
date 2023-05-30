@@ -1,7 +1,11 @@
 <?php
+
+if (session_status() == PHP_SESSION_NONE) {
   session_start();
-  if (!isset($_SESSION["login_error"]))
-      $_SESSION["login_error"] = "";
+}
+
+if (!isset($_SESSION["login_error"]))
+  $_SESSION["login_error"] = null;
 ?>
 
 <!doctype html>
@@ -25,7 +29,7 @@
     <div class="row justify-content-center">
       <div class="col-md-5 border shadow-lg rounded bg-light" style="padding:2%;">
         <h2 class="text-center text-primary">Đăng nhập</h2>
-        <small> 
+        <small>
           <p class="alert alert-danger font-weight-bold"><?php echo $_SESSION["login_error"]; ?></p>
         </small>
         <form method="POST" action="login_customer_action.php">
@@ -45,11 +49,22 @@
               <input type="password" class="form-control" name="matkhau" placeholder="Mật khẩu">
             </div>
           </div>
+          <div class="row justify-content-end" style="padding: 10px;">
+            <div class="col-auto">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="rememberPassword">
+                <label class="form-check-label" for="rememberPassword">Nhớ mật khẩu</label>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-primary" name="login" value="Login">Đăng nhập</button>
+            </div>
+          </div>
           <div class="row justify-content-center" style="padding: 10px;">
-            <button class="btn btn-primary col-10" name="login" value="Login">Đăng nhập</button>
             <p align="center">Tôi chưa có tài khoản <a href="register_customer.php" class="text-primary" style="font-weight:600;text-decoration:none;">đăng ký tại đây</a></p>
           </div>
         </form>
+
       </div>
     </div>
   </div>
@@ -58,11 +73,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   <script>
-        window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
-            });
-        }, 4000);
-    </script> 
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+      });
+    }, 1000);
+  </script>
 </body>
+
 </html>

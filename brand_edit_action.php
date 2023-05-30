@@ -10,7 +10,7 @@ if (!isset($_SESSION["brand_edit_error"])) {
 
 require("./controllers/connect.php");
 //$mathuonghieu = $_REQUEST["mathuonghieu"];
-$mathuonghieu = $_REQUEST["mathuonghieu"];
+$mathuonghieu = $_POST["mathuonghieu"];
 $tenthuonghieu = $_POST["tenthuonghieu"];
 $anhthuonghieu = $_FILES["anhthuonghieu"]["name"];
 $cstatus = $_POST["rdCstatus"];
@@ -29,10 +29,14 @@ if ($result->num_rows > 0) {
 	$sql1 = "";
 	if ($anhthuonghieu != "") {
 		if (move_uploaded_file($_FILES["anhthuonghieu"]["tmp_name"], $target_file)) {
-			$sql1 = "update thuonghieu set TenThuongHieu='" . $tenthuonghieu . "', Anh='" . $anhthuonghieu . "',Status=" . $cstatus . " where MaThuongHieu = " . $mathuonghieu;
-		} else {
-			$sql1 = "update thuonghieu set TenThuongHieu='" . $tenthuonghieu . "',Status=" . $cstatus . " where MaThuongHieu = " . $mathuonghieu;
+			$sql1 = "update thuonghieu set TenThuongHieu='" . $tenthuonghieu . "', Anh='" . $anhthuonghieu . "',Status='" . $cstatus . "' where MaThuongHieu = " . $mathuonghieu;
 		}
+	} 
+	else {
+			$sql1 = "update thuonghieu set TenThuongHieu='" . $tenthuonghieu . "',Status='" . $cstatus . "' where MaThuongHieu = " . $mathuonghieu;
+		}
+
+
 		if ($conn->query($sql1) == TRUE) {
 			$_SESSION["brand_error"] = "Edit success!";
 			$_SESSION["brand_edit_error"] = "";
@@ -43,6 +47,6 @@ if ($result->num_rows > 0) {
 			header("Location: brand_view.php");
 		}
 	}
-}
+	header("Location: brand_view.php");
 //echo $cname.$cimage.$cstatus;
 $conn->close();

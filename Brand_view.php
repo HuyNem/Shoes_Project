@@ -1,11 +1,24 @@
-<body style="background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);height: 1000px;">
-    <?php include './views/header_admin.php'; ?>
-    <div class="container" style="margin-top: 20px;">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style_header.css"> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
         <h3 align="center">Danh sách thương hiệu</h3>
-        <a href="Brand_add.php" class="btn btn-success float-end">Thêm mới</a>
+        <a href="Brand_add.php" class="btn btn-success productadd">Thêm mới</a>
         <br>
 
-        <table class="table" style="margin-top: 20px; background-color: #fff;">
+        <table class="table" style="margin-top: 10px; background-color: #fff;">
             <thead class="table-dark">
                 <tr>
                     <th>Mã thương hiệu</th>
@@ -46,41 +59,29 @@
         </table>
     </div>
 
-    
-    <!-- <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
+    <script>
+  $(document).ready(function() {
+    // Xử lý sự kiện click cho button "Quản trị thương hiệu"
+    $(".productadd").click(function(event) {
+      event.preventDefault(); // Ngăn chặn hành vi mặc định của link
 
-                
-                <div class="modal-header">
-                    <h4 class="modal-title">Thêm Thương Hiệu</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
+      // Gửi yêu cầu AJAX để tải nội dung của trang quản trị thương hiệu
+      $.ajax({
+        url: "brand_add.php",
+        method: "GET",
+        success: function(response) {
+          // Thay đổi nội dung của phần Content Wrapper bằng nội dung của trang quản trị thương hiệu
+          $(".content-wrapper").html(response);
+        },
+        error: function() {
+          // Xử lý lỗi (nếu có)
+          alert("Đã xảy ra lỗi khi tải trang quản trị thương hiệu");
+        }
+      });
+    });
+  });
+  </script>
 
-                
-                <div class="modal-body">
-                    <div class="form-group">
-                        <lable for="tenthuonghieu">Tên thương hiệu</lable>
-                        <input type="text" id="tenthuonghieu" class="form-control" name="tenthuonghieu">
-                    </div>
+</body>
 
-                    <div class="form-group" style="margin-top: 10px;">
-                        <lable for="anhthuonghieu">Ảnh thương hiệu</lable>
-                        <input type="file" id="anhthuonghieu" class="form-control" name="anhthuonghieu">
-                    </div>
-
-                    <div class="form-group" style="margin-top: 10px;">
-                        <input type=radio value=1 checked name=rdCstatus>Active
-                        <input type=radio value=0 name=rdCstatus>Inactive
-                    </div>
-                </div>
-
-                
-                <div class="modal-footer">
-                    <button type="them" class="btn btn-primary">Thêm</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div> -->
+</html>

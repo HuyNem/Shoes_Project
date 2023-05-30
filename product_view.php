@@ -1,10 +1,7 @@
-<?php include './views/header_admin.php'; ?>
 
-
-
-<body style="background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);height: 1000px;">
+<body style="height: 1000px;">
     <div class="container">
-        <h3 style="text-align: center; margin-top: 10px;">Danh sách sản phẩm</h3>
+        <h3 style="text-align: center;">Danh sách sản phẩm</h3>
         <a href="product_add.php" class="btn btn-success float-end" style="margin-bottom: 10px;">Thêm mới</a>
         <br>
 
