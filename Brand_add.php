@@ -17,49 +17,37 @@ if (isset($_SESSION["taikhoan"])) {
 
 	<body>
 		<!-- Content Header (Page header) -->
-		<section class="content-header">
-			<div class="container-fluid">
-				<div class="row mb-2">
-					<div class="col-sm-6">
-						<h1>General Form</h1>
-					</div>
-					<div class="col-sm-6">
-						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="#">Home</a></li>
-							<li class="breadcrumb-item active">General Form</li>
-						</ol>
-					</div>
-				</div>
-			</div><!-- /.container-fluid -->
-		</section>
+		
 
 		<section class="content">
 			<div class="container-fluid">
 				<div class="row">
 					<!-- left column -->
-					<div class="col-md-6">
+					<div class="col-md-6" style="margin: 50px auto;">
 						<div class="card card-primary">
 							<div class="card-header">
 								<h3 class="card-title">Thêm thương hiệu</h3>
 							</div>
 							<!-- /.card-header -->
 							<!-- form start -->
-							<form method=POST enctype="multipart/form-data" action="Brand_add_action.php">
+							<form id="brand-form" method="POST" enctype="multipart/form-data" action="Brand_add_action.php">
 								<div class="card-body">
 									<div class="form-group">
 										<label for="tenthuonghieu">Tên thương hiệu</label>
 										<input type="text" class="form-control" id="tenthuonghieu" name="tenthuonghieu" placeholder="Tên thương hiệu">
 									</div>
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label for="anhthuonghieu">Ảnh thương hiệu</label>
 										<div class="input-group">
 											<div class="custom-file">
 												<input type="file" class="custom-file-input" id="anhthuonghieu" name="anhthuonghieu">
-												<label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
+												<label class="custom-file-label" for="anhthuonghieu">Chọn ảnh</label>
 											</div>
 										</div>
-									</div>
+									</div> -->
+
+									<input type="file" name="anhthuonghieu">
 
 									<div class="form-group">
 										<label for="">Trạng thái: </label>
@@ -75,9 +63,9 @@ if (isset($_SESSION["taikhoan"])) {
 								</div>
 
 								<div class="card-footer">
-									<button type="submit" class="btn btn-primary">Thêm</button>
+									<button type="submit" class="btn btn-primary buttonadd">Thêm</button>
 									<input type="Reset" class="btn btn-secondary" name="" id="">
-									<a href="brand_view.php" class="btn btn-danger">Hủy</a>
+									<a href="#" class="btn btn-danger buttoncancel">Hủy</a>
 								</div>
 							</form>
 						</div>
@@ -85,12 +73,58 @@ if (isset($_SESSION["taikhoan"])) {
 				</div>
 			</div>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				// Xử lý sự kiện click cho button "Thêm"
+				$(".buttonadd").click(function(event) {
+					event.preventDefault(); // Ngăn chặn hành vi mặc định của button
+
+					// Gửi yêu cầu AJAX để gọi đến trang xử lý Brand_add_action.php
+					$.ajax({
+						url: "brand_add_action.php",
+						method: "POST",
+						data: $("form").serialize(), // Lấy dữ liệu từ form và gửi đi
+						success: function(response) {
+							// Xử lý kết quả thành công (nếu cần)
+							//alert("Thêm thương hiệu thành công");
+							$(".content-wrapper").html(response);
+						},
+						error: function() {
+							// Xử lý lỗi (nếu có)
+							alert("Đã xảy ra lỗi khi thêm thương hiệu");
+						}
+					});
+				});
+
+				// Xử lý sự kiện click cho button "Hủy"
+				$(".buttoncancel").click(function(event) {
+					event.preventDefault(); // Ngăn chặn hành vi mặc định của button
+
+					// Gửi yêu cầu AJAX để tải nội dung của trang brand_view.php
+					$.ajax({
+						url: "brand_view.php",
+						method: "GET",
+						success: function(response) {
+							// Thay đổi nội dung của phần Content Wrapper bằng nội dung của trang brand_view.php
+							$(".content-wrapper").html(response);
+						},
+						error: function() {
+							// Xử lý lỗi (nếu có)
+							alert("Đã xảy ra lỗi khi tải trang brand_view.php");
+						}
+					});
+				});
+			});
+		</script>
+
 		<?php
-	} else {
-		header("Location: login_admin.php");
-		exit();
-	}
+			} else {
+				header("Location: login_admin.php");
+				exit();
+			}
 		?>
+
 	</body>
 
 	</html>

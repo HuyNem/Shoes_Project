@@ -28,3 +28,5 @@ if ($result->num_rows>0){
 //echo $cname.$cimage.$cstatus;
 $conn->close();
 
+?>
+

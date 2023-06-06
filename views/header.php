@@ -77,20 +77,21 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Giày Vans</a>
+              <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Giày Nike</a>
+              <a class="nav-link" href="#">Sản phẩm</a>
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Giày lười
+                Danh mục
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Giày Vans</a></li>
-                <li><a class="dropdown-item" href="#">Giày Nike</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Vans</a></li>
+                <li><a class="dropdown-item" href="#">Adidas</a></li>
+                <li><a class="dropdown-item" href="#">Balenciaga</a></li>
+                <li><a class="dropdown-item" href="#">Bitis hunter</a></li>
               </ul>
             </li>
 
@@ -105,8 +106,9 @@
                 Xin Chào <?php echo $_SESSION["HoTen"]; ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                <li><a class="dropdown-item" href="profile_cus.php">Thông tin cá nhân</a></li>
                 <li><a class="dropdown-item" href="#">Đơn mua</a></li>
+                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
                 <li><a class="dropdown-item" href="logout_cus.php">Đăng xuất</a></li>
               </ul>
             </li>

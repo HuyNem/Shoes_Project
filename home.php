@@ -17,27 +17,28 @@ if (isset($_SESSION["HoTen"])) {
     <title>Home page</title>
 
     <style>
-    /* Add this CSS code */
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-    }
+      /* Add this CSS code */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
 
-    .col-md-6,
-    .col-lg-4,
-    .col-xl-3 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+      .col-md-6,
+      .col-lg-4,
+      .col-xl-3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
 
-    .single-product.product {
-      width: 100%;
-      height: 100%;
-      max-width: 300px; /* Adjust the max-width as needed */
-    }
-  </style>
+      .single-product.product {
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        /* Adjust the max-width as needed */
+      }
+    </style>
 
   </head>
 
@@ -48,32 +49,24 @@ if (isset($_SESSION["HoTen"])) {
     <!-- SLIDER -->
     <div class="container">
       <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="padding: 30px 10px;">
-        <div class="carousel-indicators">
+        <!-- <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
+        </div> -->
         <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000">
+          <!-- <div class="carousel-item active" data-bs-interval="10000">
             <img src="./image/slide/shoes1.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>First slide label</h5>
               <p>Some representative placeholder content for the first slide.</p>
             </div>
+          </div> -->
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="./image/slide/slide2.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img src="./image/slide/shoes2.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./image/slide/shoes3.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div>
+            <img src="./image/slide/slide3.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -141,10 +134,13 @@ if (isset($_SESSION["HoTen"])) {
     </section>
   <?php
 } else {
+  $_SESSION["login_error"] = "Bạn chưa đăng nhập!";
   header("Location: login_customer.php");
   exit();
 }
   ?>
+
+  <?php include './views/footer.php'; ?>
   </body>
 
   </html>

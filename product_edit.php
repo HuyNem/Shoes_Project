@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
         <div class="container w-50 mt-3">
             <div class="product-edit">
                 <h3 style="text-align: center;">Sửa sản phẩm</h3>
-                <form method=POST enctype="multipart/form-data" action="product_edit_action.php">
+                <form method="POST" enctype="multipart/form-data" action="product_edit_action.php">
                     <input type="hidden" name="pid" value="<?php echo $pid; ?>" id="">
                     <div class="row">
                         <!-- Tên sản phẩm -->
