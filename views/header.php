@@ -108,7 +108,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li><a class="dropdown-item" href="profile_cus.php">Thông tin cá nhân</a></li>
                 <li><a class="dropdown-item" href="#">Đơn mua</a></li>
-                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                <li><a class="dropdown-item" href="change_password.php">Đổi mật khẩu</a></li>
                 <li><a class="dropdown-item" href="logout_cus.php">Đăng xuất</a></li>
               </ul>
             </li>

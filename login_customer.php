@@ -1,18 +1,27 @@
 <?php
+session_start();
 
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//   //khai báo bảng error để chứa lỗi ví dụ trong trường hoten thì có [phải nhập, có ít nhất 5 ký tự]
+//   $error = [];
 
-if (!isset($_SESSION["login_error"]))
-  $_SESSION["login_error"] = null;
+//   //validate hoten
+//   if (empty(trim($_POST['taikhoan']))) {
+//     $error['taikhoan']['required'] = "Vui lòng nhập tài khoản *";
+//   }
+
+//   //validate taikhoan
+//   if (empty(trim($_POST['matkhau']))) {
+//     $error['matkhau']['required'] = "Vui lòng nhập mật khẩu *";
+//   }
+// }
 ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-  <title>Login</title>
+  <title>Login Customer</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,42 +30,58 @@ if (!isset($_SESSION["login_error"]))
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
+<body class="hold-transition login-page">
 
   <div class="container" style="margin-top:5%;">
     <div class="row justify-content-center">
-      <div class="col-md-5 border shadow-lg rounded bg-light" style="padding:2%;">
+      <div class="col-md-4 border shadow-lg rounded bg-light" style="padding:2%;">
         <h2 class="text-center text-primary">Đăng nhập</h2>
-        <small>
-          <p class="alert alert-danger font-weight-bold"><?php echo $_SESSION["login_error"]; ?></p>
-        </small>
+
+        <?php
+        if (isset($_SESSION["login_error"])) {
+          echo "<div class='alert alert-danger' role='alert'>" . $_SESSION["login_error"] . "</div>";
+          unset($_SESSION["login_error"]);
+        }
+        ?>
+
+
         <form method="POST" action="login_customer_action.php">
           <div class="row form-group" style="padding: 10px;">
+
+            <?php
+            // echo (!empty($error['taikhoan']['required'])) ?
+            //   '<span style="color: red;">' . $error['taikhoan']['required'] . '</span>' : false;
+            ?>
+
             <div class="col input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-person"></i></span>
-              </div>
               <input type="text" class="form-control" name="taikhoan" placeholder="Tài khoản">
             </div>
           </div>
+
+
           <div class="row form-group" style="padding: 10px;">
+            <?php
+            // echo (!empty($error['matkhau']['required'])) ?
+            //   '<span style="color: red;">' . $error['matkhau']['required'] . '</span>' : false;
+            ?>
             <div class="col input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-lock"></i></span>
-              </div>
               <input type="password" class="form-control" name="matkhau" placeholder="Mật khẩu">
             </div>
+
+
+
           </div>
           <div class="row justify-content-end" style="padding: 10px;">
-            <div class="col-auto">
+            <div class="col-8">
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="rememberPassword">
                 <label class="form-check-label" for="rememberPassword">Nhớ mật khẩu</label>
               </div>
             </div>
-            <div class="col-auto">
+            <div class="col-4">
               <button class="btn btn-primary" name="login" value="Login">Đăng nhập</button>
             </div>
           </div>
@@ -77,7 +102,7 @@ if (!isset($_SESSION["login_error"]))
       $(".alert").fadeTo(500, 0).slideUp(500, function() {
         $(this).remove();
       });
-    }, 1000);
+    }, 4000);
   </script>
 </body>
 

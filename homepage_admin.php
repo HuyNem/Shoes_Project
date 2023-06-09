@@ -218,11 +218,11 @@ if (isset($_SESSION["taikhoan"])) {
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="" class="nav-link nav-link-brand">Quản trị thương hiệu</a>
+                <a href="brand_view.php" class="nav-link nav-link-brand">Quản trị thương hiệu</a>
               </li>
 
               <li class="nav-item">
-                <a href="" class="nav-link nav-link-product">Quản trị sản phẩm</a>
+                <a href="product_view.php" class="nav-link nav-link-product">Quản trị sản phẩm</a>
               </li>
 
             </ul>
@@ -236,9 +236,7 @@ if (isset($_SESSION["taikhoan"])) {
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-
-      </div>
+      
       <!-- /.content-wrapper -->
       <footer class="main-footer">
         <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -292,50 +290,6 @@ if (isset($_SESSION["taikhoan"])) {
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
 
-
-    <script>
-      $(document).ready(function() {
-        // Xử lý sự kiện click cho button "Quản trị thương hiệu"
-        $(".nav-link-brand").click(function(event) {
-          event.preventDefault(); // Ngăn chặn hành vi mặc định của link
-
-          // Gửi yêu cầu AJAX để tải nội dung của trang quản trị thương hiệu
-          $.ajax({
-            url: "brand_view.php",
-            method: "GET",
-            success: function(response) {
-              // Thay đổi nội dung của phần Content Wrapper bằng nội dung của trang quản trị thương hiệu
-              $(".content-wrapper").html(response);
-            },
-            error: function() {
-              // Xử lý lỗi (nếu có)
-              alert("Đã xảy ra lỗi khi tải trang quản trị thương hiệu");
-            }
-          });
-        });
-      });
-
-      $(document).ready(function() {
-        // Xử lý sự kiện click cho button "Quản trị sản phẩm"
-        $(".nav-link-product").click(function(event) {
-          event.preventDefault(); // Ngăn chặn hành vi mặc định của link
-
-          // Gửi yêu cầu AJAX để tải nội dung của trang quản trị sản phẩm
-          $.ajax({
-            url: "product_view.php",
-            method: "GET",
-            success: function(response) {
-              // Thay đổi nội dung của phần Content Wrapper bằng nội dung của trang quản trị sản phẩm
-              $(".content-wrapper").html(response);
-            },
-            error: function() {
-              // Xử lý lỗi (nếu có)
-              alert("Đã xảy ra lỗi khi tải trang quản trị sản phẩm");
-            }
-          });
-        });
-      });
-    </script>
 
   <?php
 } else {

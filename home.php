@@ -141,6 +141,8 @@ if (isset($_SESSION["HoTen"])) {
   ?>
 
   <?php include './views/footer.php'; ?>
+
+
   </body>
 
   </html>

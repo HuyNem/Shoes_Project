@@ -3,7 +3,6 @@ session_start();
 if (isset($_SESSION["taikhoan"])) {
 ?>
 
-
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -11,23 +10,28 @@ if (isset($_SESSION["taikhoan"])) {
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="./css/brand_add_style.css">
 		<title>brand add</title>
 	</head>
 
 	<body>
 		<!-- Content Header (Page header) -->
-		
-
-		<section class="content">
+		<?php include './views/view_admin.php'; ?>
+		<section class="content-wrapper" style="padding-top: 20px;">
 			<div class="container-fluid">
 				<div class="row">
 					<!-- left column -->
-					<div class="col-md-6" style="margin: 50px auto;">
+					<div class="col-md-12"> <!-- style="margin: 50px auto;" -->
 						<div class="card card-primary">
 							<div class="card-header">
 								<h3 class="card-title">Thêm thương hiệu</h3>
 							</div>
+
+							<?php
+							if (isset($_SESSION["Brand_add_error"])) {
+								echo "<div class='alert alert-danger' role='alert'>" . $_SESSION["Brand_add_error"] . "</div>";
+								unset($_SESSION["Brand_add_error"]);
+							}
+							?>
 							<!-- /.card-header -->
 							<!-- form start -->
 							<form id="brand-form" method="POST" enctype="multipart/form-data" action="Brand_add_action.php">
@@ -65,65 +69,32 @@ if (isset($_SESSION["taikhoan"])) {
 								<div class="card-footer">
 									<button type="submit" class="btn btn-primary buttonadd">Thêm</button>
 									<input type="Reset" class="btn btn-secondary" name="" id="">
-									<a href="#" class="btn btn-danger buttoncancel">Hủy</a>
+									<a href="brand_view.php" class="btn btn-danger buttoncancel">Hủy</a>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+		</section>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script>
-			$(document).ready(function() {
-				// Xử lý sự kiện click cho button "Thêm"
-				$(".buttonadd").click(function(event) {
-					event.preventDefault(); // Ngăn chặn hành vi mặc định của button
+	<?php
+} else {
+	header("Location: login_admin.php");
+	exit();
+}
+	?>
 
-					// Gửi yêu cầu AJAX để gọi đến trang xử lý Brand_add_action.php
-					$.ajax({
-						url: "brand_add_action.php",
-						method: "POST",
-						data: $("form").serialize(), // Lấy dữ liệu từ form và gửi đi
-						success: function(response) {
-							// Xử lý kết quả thành công (nếu cần)
-							//alert("Thêm thương hiệu thành công");
-							$(".content-wrapper").html(response);
-						},
-						error: function() {
-							// Xử lý lỗi (nếu có)
-							alert("Đã xảy ra lỗi khi thêm thương hiệu");
-						}
-					});
-				});
-
-				// Xử lý sự kiện click cho button "Hủy"
-				$(".buttoncancel").click(function(event) {
-					event.preventDefault(); // Ngăn chặn hành vi mặc định của button
-
-					// Gửi yêu cầu AJAX để tải nội dung của trang brand_view.php
-					$.ajax({
-						url: "brand_view.php",
-						method: "GET",
-						success: function(response) {
-							// Thay đổi nội dung của phần Content Wrapper bằng nội dung của trang brand_view.php
-							$(".content-wrapper").html(response);
-						},
-						error: function() {
-							// Xử lý lỗi (nếu có)
-							alert("Đã xảy ra lỗi khi tải trang brand_view.php");
-						}
-					});
-				});
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script>
+		window.setTimeout(function() {
+			$(".alert").fadeTo(500, 0).slideUp(500, function() {
+				$(this).remove();
 			});
-		</script>
+		}, 4000);
+	</script>
 
-		<?php
-			} else {
-				header("Location: login_admin.php");
-				exit();
-			}
-		?>
 
 	</body>
 
