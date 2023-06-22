@@ -6,60 +6,92 @@ session_start();
 <html lang="en">
 
 <head>
-  <title>Login</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS v5.2.1 -->
+  <!-- Bootstrap CSS v5.2.1
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> -->
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+
+  <style>
+    .login-page {
+      height: 70vh;
+    }
+  </style>
+
+  <title>Login Admin</title>
 </head>
 
-<body>
+<body class="hold-transition login-page">
 
-  <div class="container" style="margin-top:5%;">
-    <div class="row justify-content-center">
-      <div class="col-md-5 border shadow-lg rounded bg-light" style="padding:2%;">
-        <h2 class="text-center text-primary">Admin đăng nhập</h2>
-
+  <div class="login-box" style="margin-top: 20px;">
+    <div class="login-logo">
+      <a href="../../index2.html"><b>Đăng nhập </b>Admin</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
         <?php
         if (isset($_SESSION["login_error"])) {
           echo "<div class='alert alert-danger' role='alert'>" . $_SESSION["login_error"] . "</div>";
           unset($_SESSION["login_error"]);
         }
         ?>
+
         <form method="POST" action="login_admin_action.php">
-          <div class="row form-group" style="padding: 10px;">
-            <div class="col input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Tài khoản" name="taikhoan">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
               </div>
-              <input type="text" class="form-control" name="taikhoan" placeholder="Tài khoản">
             </div>
           </div>
-          <div class="row form-group" style="padding: 10px;">
-            <div class="col input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Mật khẩu" name="matkhau">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
               </div>
-              <input type="password" class="form-control" name="matkhau" placeholder="Mật khẩu">
             </div>
           </div>
-          <div class="row justify-content-center" style="padding: 10px;">
-            <button class="btn btn-primary col-10" name="login" value="Login">Đăng nhập</button>
+          <div class="row">
+            <div class="col-7">
+              <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Nhớ mật khẩu
+                </label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-5">
+              <button type="submit" class="btn btn-primary btn-block" name="login">Đăng nhập</button>
+            </div>
+            <!-- /.col -->
           </div>
         </form>
+
       </div>
+
     </div>
+    <!-- /.login-card-body -->
   </div>
-
-
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
   <script>
     window.setTimeout(function() {
       $(".alert").fadeTo(500, 0).slideUp(500, function() {

@@ -6,7 +6,12 @@ $matkhau = $_POST["matkhau"];
 //kiem tra xem co trong CSDL hay khong
 $sql = "select * from admin where taikhoan='" . $taikhoan . "' and matkhau='" . $matkhau . "'";
 $result = $conn->query($sql) or die($conn->error);
-if ($result->num_rows > 0) {
+if (empty($_POST["taikhoan"]) || empty($_POST["matkhau"])){
+    $_SESSION["login_error"] = "Bạn chưa nhập tài khoản hoặc mật khẩu";
+    $_SESSION["login"] = FALSE;
+    header("Location: login_admin.php");
+}
+else if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $_SESSION["taikhoan"] = $row["taikhoan"];
     $_SESSION["login_error"] = "";
