@@ -40,8 +40,8 @@
 
                                     //câu lệnh liệt kê
                                     $lietke_sql = "SELECT s.PID, s.TenSP, s.SoLuong, s.Gia, m.tenmau, k.kichthuoc 
-                                                                           FROM sanpham s INNER JOIN mausp m ON s.IDMau = m.IDMau
-                                                                           INNER JOIN kichthuocsp k ON s.IDKichThuoc = k.IDKichThuoc
+                                                   FROM sanpham s INNER JOIN mausp m ON s.IDMau = m.IDMau
+                                                   INNER JOIN kichthuocsp k ON s.IDKichThuoc = k.IDKichThuoc
                                                    ORDER BY PID, TenSP";
 
                                     //thực thi câu lệnh

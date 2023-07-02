@@ -17,6 +17,7 @@ if (empty($_POST["taikhoan"]) || empty($_POST["matkhau"])){
 else if ($result->num_rows > 0) {
 	$row = $result->fetch_assoc();
 	$_SESSION["HoTen"] = $row["HoTen"];
+	$_SESSION["AnhCus"] = $row["AnhCus"];
 	$_SESSION["login_error"] = "";
 	$_SESSION["login"] = TRUE;
 

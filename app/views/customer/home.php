@@ -103,7 +103,7 @@ session_start();
                     <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                     <li><a href="#"><i class="fas fa-heart"></i></a></li>
                     <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                    <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                    <li><a href="product_details.php?pid=<?php echo $r['PID']; ?>"><i class="fas fa-expand"></i></a></li>
                   </ul>
                 </div>
                 <div class="part-2">

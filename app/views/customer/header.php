@@ -110,6 +110,7 @@
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Xin Chào <?php echo $_SESSION["HoTen"]; ?></a>
       <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdownMenuLink">
         <li><a class="dropdown-item" href="profile_cus.php">Thông tin cá nhân</a></li>
+        <li><a class="dropdown-item" href="profile_cus.php">Giỏ hàng</a></li>
         <li><a class="dropdown-item" href="#">Đơn mua</a></li>
         <li><a class="dropdown-item" href="change_password.php">Đổi mật khẩu</a></li>
         <li><a class="dropdown-item" href="../../models/customer/logout_cus.php">Đăng xuất</a></li>
@@ -117,7 +118,8 @@
     </li>
     <?php
     } else {
-      echo "<a href='register_customer.php' style='color: orange; padding-right:10px; border-right: 1px solid;'>Đăng ký</a>";
+      echo "<a href='register_customer.php' style='color: orange; padding-right:10px; border-right: 1px solid;'><i class='bi bi-cart'></i></a>";
+      echo "<a href='register_customer.php' style='color: orange; padding: 0px 10px; border-right: 1px solid;'>Đăng ký</a>";
       echo "<a href='login_customer.php' style='color: orange; padding-left: 10px;'>Đăng nhập</a>";
     }
     ?>

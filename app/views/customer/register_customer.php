@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sodienthoai = $_POST["sodienthoai"];
     $diachi = $_POST["diachi"];
 
-    require("./controllers/connect.php");
+    require("../../controllers/connect.php");
     //kiểm tra xem tài khoản đã tồn tại chưa
     $sql = "SELECT * FROM khachhang WHERE TaiKhoan = '" . $taikhoan . "'";
     //truy vấn trong csdl
