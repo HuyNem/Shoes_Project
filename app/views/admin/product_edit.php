@@ -223,7 +223,7 @@ if ($result->num_rows > 0) {
                                 <!-- Mô tả -->
                                 <div class="form-group">
                                     <label for="mota">Mô tả:</label>
-                                    <textarea type="text" class="form-control" id="mota" name="mota"> <?php echo $r['MoTa']; ?></textarea>
+                                    <textarea type="text" class="form-control" rows="10" id="mota" name="mota"> <?php echo $r['MoTa']; ?></textarea>
                                     <?php
                                     echo (isset($error['mota'])) ?
                                         '<span style="color: red;">' . $error['mota'] . '</span>' : false;

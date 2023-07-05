@@ -182,7 +182,7 @@ if ($result->num_rows > 0) {
                             <img src="../../../public/image/customer/<?php echo $anhCus; ?>" alt="User Avatar" width="50" height="50">
                             <span class="user-name"><?php echo $_SESSION["HoTen"]; ?></span>
                         </div>
-                        <textarea class="form-control mt-3" rows="3" placeholder="Nhập bình luận của bạn" name="noidung"></textarea>
+                        <textarea class="form-control mt-3" rows="3" placeholder="Nhập đánh giá của bạn" name="noidung"></textarea>
                         <!-- Báo lỗi -->
                         <?php
                         echo (isset($error['noidung'])) ?

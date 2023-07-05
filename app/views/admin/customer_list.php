@@ -8,11 +8,9 @@ if (isset($_GET['voi_tu_khoa'])) {
     // Chuyển từ khóa tìm kiếm thành dạng phù hợp cho truy vấn SQL
     $keyword = "%" . $keyword . "%";
 
-    $searchQuery = "SELECT s.PID, s.TenSP, s.SoLuong, s.Gia, m.tenmau, k.kichthuoc 
-                    FROM sanpham s
-                    INNER JOIN mausp m ON s.IDMau = m.IDMau
-                    INNER JOIN kichthuocsp k ON s.IDKichThuoc = k.IDKichThuoc
-                    WHERE s.TenSP LIKE ?";
+    $searchQuery = "SELECT *
+                    FROM khachhang
+                    WHERE HoTen LIKE ?";
 
 
     if (!empty($searchQuery)) {
@@ -23,7 +21,7 @@ if (isset($_GET['voi_tu_khoa'])) {
 
         // Lấy kết quả tìm kiếm
         $r = mysqli_stmt_get_result($stmt);
-        $products = mysqli_fetch_all($r, MYSQLI_ASSOC);
+        $customers = mysqli_fetch_all($r, MYSQLI_ASSOC);
 
         // Đóng Prepared Statements
         mysqli_stmt_close($stmt);
@@ -49,7 +47,7 @@ if($page == '' || $page ==1) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Danh sách khách hàng</title>
 </head>
 
 <body>
@@ -60,18 +58,13 @@ if($page == '' || $page ==1) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Danh sách sản phẩm</h3>
+                            <h3 class="card-title">Danh sách khách hàng</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
 
                             <div class="row" style="padding-bottom: 10px;">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dt-buttons btn-group flex-wrap">
-                                        <a href="product_add.php" class="btn btn-success" style="margin-bottom: 10px;">Thêm mới</a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 d-flex justify-content-end">
+                                <div class="">
                                     <form class="form-inline" method="get">
                                         <label>Tìm kiếm:
                                             <input type="search" class="form-control form-control-sm" placeholder="" name="voi_tu_khoa">
@@ -84,31 +77,28 @@ if($page == '' || $page ==1) {
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Tên</th>
-                                        <th>Số lượng</th>
-                                        <th>Giá</th>
-                                        <th>Màu</th>
-                                        <th>Kích thước</th>
-                                        <th style="width: 13%;">Chức năng</th>
+                                        <th>Tài khoản</th>
+                                        <th>Họ tên</th>
+                                        <th>Email</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Ảnh</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <?php
-                                    if (!empty($products)) {
-                                        foreach ($products as $product) {
+                                    if (!empty($customers)) {
+                                        foreach ($customers as $customer) {
                                     ?>
                                             <tr>
-                                                <td><?php echo $product['PID']; ?></td>
-                                                <td><?php echo $product['TenSP']; ?></td>
-                                                <td><?php echo $product['SoLuong']; ?></td>
-                                                <td><?php echo $product['Gia']; ?></td>
-                                                <td><?php echo $product['tenmau']; ?></td>
-                                                <td><?php echo $product['kichthuoc']; ?></td>
-                                                <td>
-                                                    <a href="product_edit.php?pid=<?php echo $product['PID']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
-                                                    <a onclick="return confirm('Bạn có muốn xóa không?');" href="../../models/admin/product_delete_action.php?pid=<?php echo $product['PID']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
-                                                </td>
+                                                <td><?php echo $customer['CusID']; ?></td>
+                                                <td><?php echo $customer['TaiKhoan']; ?></td>
+                                                <td><?php echo $customer['HoTen']; ?></td>
+                                                <td><?php echo $customer['Email']; ?></td>
+                                                <td><?php echo $customer['SoDienThoai']; ?></td>
+                                                <td><?php echo $customer['DiaChi']; ?></td>
+                                                <td><?php echo $customer['AnhCus']; ?></td>
                                             </tr>
                                     <?php
                                         }
@@ -116,15 +106,14 @@ if($page == '' || $page ==1) {
                                     ?>
 
                                     <?php
-                                    if (empty($products)) {
+                                    if (empty($customers)) {
                                         //kết nối csdl
                                         require_once('../../controllers/connect.php');
 
                                         //câu lệnh liệt kê
-                                        $lietke_sql = "SELECT s.PID, s.TenSP, s.SoLuong, s.Gia, m.tenmau, k.kichthuoc 
-                                                   FROM sanpham s INNER JOIN mausp m ON s.IDMau = m.IDMau
-                                                   INNER JOIN kichthuocsp k ON s.IDKichThuoc = k.IDKichThuoc
-                                                   ORDER BY PID, TenSP DESC LIMIT $begin,3";
+                                        $lietke_sql = "SELECT *
+                                                   FROM khachhang
+                                                   ORDER BY CusID, HoTen DESC LIMIT $begin,3";
 
                                         //thực thi câu lệnh
                                         $result = mysqli_query($conn, $lietke_sql);
@@ -134,16 +123,13 @@ if($page == '' || $page ==1) {
                                     ?>
 
                                             <tr>
-                                                <td><?php echo $r['PID']; ?></td>
-                                                <td><?php echo $r['TenSP']; ?></td>
-                                                <td><?php echo $r['SoLuong']; ?></td>
-                                                <td><?php echo $r['Gia']; ?></td>
-                                                <td><?php echo $r['tenmau']; ?></td>
-                                                <td><?php echo $r['kichthuoc']; ?></td>
-                                                <td>
-                                                    <a href="product_edit.php?pid=<?php echo $r['PID']; ?>"> <button type="button" class="btn btn-primary">Sửa</button></a>
-                                                    <a onclick="return confirm('Bạn có muốn xóa không?');" href="../../models/admin/product_delete_action.php?pid=<?php echo $r['PID']; ?>"><button type="button" class="btn btn-danger">Xóa</button></a>
-                                                </td>
+                                                <td><?php echo $r['CusID']; ?></td>
+                                                <td><?php echo $r['TaiKhoan']; ?></td>
+                                                <td><?php echo $r['HoTen']; ?></td>
+                                                <td><?php echo $r['Email']; ?></td>
+                                                <td><?php echo $r['SoDienThoai']; ?></td>
+                                                <td><?php echo $r['DiaChi']; ?></td>
+                                                <td><img class="" src='../../../public/image/customer/<?php echo $r["AnhCus"]; ?>' width="50"></td>
                                             </tr>
 
                                     <?php
@@ -152,17 +138,6 @@ if($page == '' || $page ==1) {
                                     ?>
 
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>Tên</th>
-                                        <th>Số lượng</th>
-                                        <th>Giá</th>
-                                        <th>Màu</th>
-                                        <th>Kích thước</th>
-                                        <th>Chức năng</th>
-                                    </tr>
-                                </tfoot>
 
                             </table>
                         </div>
@@ -172,7 +147,7 @@ if($page == '' || $page ==1) {
                         require_once('../../controllers/connect.php');
 
                         // Câu truy vấn
-                        $sql_trang = "SELECT * FROM sanpham";
+                        $sql_trang = "SELECT * FROM khachhang";
 
                         // Thực thi truy vấn
                         $result = mysqli_query($conn, $sql_trang);
@@ -195,7 +170,7 @@ if($page == '' || $page ==1) {
                                     <?php
                                         for($i=1; $i<=$trang; $i++) {
                                     ?>
-                                    <li class="page-item"><a class="page-link" href="product_view.php?trang=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="customer_list.php?trang=<?php echo $i ?>"><?php echo $i ?></a></li>
                                     <?php
                                         }
                                     ?>

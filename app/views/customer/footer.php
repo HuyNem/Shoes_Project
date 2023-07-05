@@ -1,122 +1,89 @@
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
-  <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-    <!-- Left -->
-    <div class="me-5 d-none d-lg-block">
-      <span>Get connected with us on social networks:</span>
-    </div>
-    <!-- Left -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<?php
+echo '<style>
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+footer > * {
+    flex: 1;
+}
+footer h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+footer p {
+    margin: 0;
+}
+footer a {
+    color: white;
+    transition: color 0.5s;
+}
+footer a:hover {
+    color: #ff0;
+}
+footer button {
+    animation: blink 1s infinite;
+}
+footer img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    transition: transform 0.5s;
+}
+footer img:hover {
+    transform: scale(1.2);
+}
+footer .support, footer .social-media, footer .company-info {
+    text-align: left;
+}
+footer .social-media a {
+    font-size: 18px;
+}
 
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </section>
-  <!-- Section: Social media -->
+</style>';
 
-  <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
-          </h6>
-          <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Pricing</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            info@example.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-        </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: Links  -->
-
-  <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
+echo '<footer>';
+echo '<div class="social-media">';
+echo '<h4>Mạng Xã Hội</h4>';
+echo '<ul>';
+echo '<li><a href="#"><i class="fa fa-facebook-official"></i> Facebook</a></li>';
+echo '<li><a href="#"><i class="fa fa-commenting"></i> Zalo</a></li>';
+echo '<li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>';
+echo '</ul>';
+echo '</div>';
+echo '<div class="company-info">';
+echo '<h3>SPORT SHOES</h3>';
+echo '<p>Địa chỉ: 55 Giải Phóng Đồng Tâm, Giáp Bát, Thanh X, Hà Nội, Việt Nam</p>';
+echo '<p>Điện thoại: 0985652423</p>';
+echo '<p>Email: info@sportshoes.com</p>';
+echo '</div>';
+echo '<div class="support">';
+echo '<h4>Hỗ Trợ Khách Hàng</h4>';
+echo '<ul>';
+echo '<li><a href="#">Làm thế nào để đặt hàng?</a></li>';
+echo '<li><a href="#">Phương thức thanh toán nào được chấp nhận?</a></li>';
+echo '<li><a href="#">Tôi có thể theo dõi đơn hàng của tôi như thế nào?</a></li>';
+echo '</ul>';
+echo '<button>Trò Chuyện Ngay</button>';
+echo '</div>';
+?>
+</body>
+</html>

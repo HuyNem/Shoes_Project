@@ -1,9 +1,9 @@
 <?php
 session_start();
-if ($_SESSION["login"] == FALSE){
-  //phải đăng nhập thì mới cho vào
-  $_SESSION["login_error"] = "Vui lòng đăng nhập!";
-  header("Location: login_admin.php");
+if ($_SESSION["login"] == FALSE) {
+    //phải đăng nhập thì mới cho vào
+    $_SESSION["login_error"] = "Vui lòng đăng nhập!";
+    header("Location: login_admin.php");
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ if ($_SESSION["login"] == FALSE){
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -96,7 +96,7 @@ if ($_SESSION["login"] == FALSE){
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="#" class="brand-link">
                 <img src="../../../public/image/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">SportShoes</span>
             </a>
@@ -106,7 +106,7 @@ if ($_SESSION["login"] == FALSE){
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../../../public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../../../public/dist/img/admin.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"><?php echo $_SESSION["taikhoan"]; ?></a>
@@ -129,20 +129,24 @@ if ($_SESSION["login"] == FALSE){
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="../../views/admin/brand_view.php" class="nav-link nav-link-brand">Quản trị thương hiệu</a>
-                        </li>
 
                         <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <p>
-                                    Sản phẩm
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
+
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../../views/admin/product_view.php" class="nav-link active">
+                                    <a href="../../views/admin/customer_list.php" class="nav-link">
+                                        <i class="fa fa-users"></i>
+                                        <p>Quản trị khách hàng</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../../views/admin/brand_view.php" class="nav-link">
+                                        <i class="fa fa-trademark"></i>
+                                        <p>Quản trị thương hiệu</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../../views/admin/product_view.php" class="nav-link">
                                         <i class="fas fa-th-list nav-icon"></i>
                                         <p>danh sách sản phẩm</p>
                                     </a>
@@ -159,12 +163,6 @@ if ($_SESSION["login"] == FALSE){
                                         <p>Màu sắc sản phẩm</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="../../views/admin/product_img.php" class="nav-link">
-                                        <i class="fa fa-image nav-icon"></i>
-                                        <p>Ảnh sản phẩm</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
 
@@ -179,48 +177,43 @@ if ($_SESSION["login"] == FALSE){
         </aside>
 
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="../../../plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="../../../plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="../../../plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="../../../plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="../../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="../../../plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="../../../plugins/moment/moment.min.js"></script>
-    <script src="../../../plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="../../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="../../../plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../../public/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../../public/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../../../public/dist/js/pages/dashboard.js"></script>
+
+        <!-- jQuery -->
+        <script src="../../../plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <!-- Bootstrap 4 -->
+        <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- ChartJS -->
+        <script src="../../../plugins/chart.js/Chart.min.js"></script>
+        <!-- Sparkline -->
+        <script src="../../../plugins/sparklines/sparkline.js"></script>
+        <!-- JQVMap -->
+        <script src="../../../plugins/jqvmap/jquery.vmap.min.js"></script>
+        <script src="../../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="../../../plugins/jquery-knob/jquery.knob.min.js"></script>
+        <!-- daterangepicker -->
+        <script src="../../../plugins/moment/moment.min.js"></script>
+        <script src="../../../plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="../../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Summernote -->
+        <script src="../../../plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- overlayScrollbars -->
+        <script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../../../public/dist/js/adminlte.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="../../../public/dist/js/demo.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="../../../public/dist/js/pages/dashboard.js"></script>
+
 
 </body>
 

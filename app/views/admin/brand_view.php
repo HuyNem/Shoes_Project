@@ -24,7 +24,7 @@
       <a href="Brand_add.php" class="btn btn-success productadd">Thêm mới</a>
       <br>
       <table class="table" style="margin-top: 10px; background-color: #fff;">
-        <thead class="table-dark">
+        <thead class="">
           <tr>
             <th style="width: 10%">Mã thương hiệu</th>
             <th style="width: 20%">Tên thương hiệu</th>
